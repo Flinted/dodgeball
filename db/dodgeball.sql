@@ -10,5 +10,7 @@ CREATE TABLE teams (
 CREATE TABLE matches (
   id SERIAL8 primary key,
   home_team_id INT4 references teams(id),
-  away_team_id INT4 references teams(id)
+  away_team_id INT4 references teams(id),
+  home_score INT2,
+  away_score INT2
 );

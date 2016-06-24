@@ -14,6 +14,11 @@ class Team
 
   end
 
+  def self.delete_all(runner)
+    sql = "DELETE FROM teams"
+    runner.run( sql )
+  end
+  
   def self.map_all(runner)
 
   end
