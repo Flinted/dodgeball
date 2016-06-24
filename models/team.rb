@@ -1,3 +1,5 @@
+require_relative 'match'
+
 class Team
 
   attr_reader :name, :id
@@ -8,7 +10,7 @@ class Team
   end
 
   def save()
-    sql = "INSERT INTO teams (name) VALUES ('#{@name}'' RETURNING *"
+    sql = "INSERT INTO teams (name) VALUES ('#{@name}') RETURNING *"
     result = @runner.run(sql)
     return Team.new(result.first, @runner)
   end

@@ -1,8 +1,10 @@
+require_relative 'team'
+
 class Match
 
   attr_reader :id
 
-  def intitialize(options, runner)
+  def initialize(options, runner)
     @id = options['id']
     @home_team = options['home_team'].to_i
     @away_team = options['away_team'].to_i
@@ -12,7 +14,7 @@ class Match
   end
 
   def save()
-    sql = "INSERT INTO matches (home_team_id, away_team_id, home_score, away_score) VALUES (#{@home_team},#{@away_team},#{@home_score},#{@away_score} RETURNING *"
+    sql = "INSERT INTO matches (home_team_id, away_team_id, home_score, away_score) VALUES (#{@home_team},#{@away_team},#{@home_score},#{@away_score}) RETURNING *"
     result = @runner.run(sql)
     return Match.new(result.first, @runner)
   end

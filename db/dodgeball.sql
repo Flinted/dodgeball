@@ -1,10 +1,10 @@
-DROP TABLE teams:
 DROP TABLE matches;
+DROP TABLE teams;
+
 
 CREATE TABLE teams (
   id SERIAL4 primary key,
   name VARCHAR(255) not null
-
 );
 
 CREATE TABLE matches (
