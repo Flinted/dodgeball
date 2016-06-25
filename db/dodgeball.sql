@@ -1,5 +1,6 @@
 DROP TABLE matches;
 DROP TABLE teams;
+DROP TABLE players;
 
 
 CREATE TABLE teams (
@@ -13,4 +14,10 @@ CREATE TABLE matches (
   away_team_id INT4 references teams(id),
   home_score INT2,
   away_score INT2
+);
+
+CREATE TABLE players (
+  id SERIAL8 primary key,
+  name VARCHAR(255),
+  team_id INT4
 );

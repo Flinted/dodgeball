@@ -6,13 +6,13 @@ class Team
   def initialize(options, runner)
     @id = options['id']
     @name =options['name']
+    @players= []
     @runner = runner
   end
 
   def save()
     sql = "INSERT INTO teams (name) VALUES ('#{@name}') RETURNING *"
-    result = @runner.run(sql)
-    return Team.new(result.first, @runner)
+    return Team.map_one( sql, @runner)
   end
 
   def self.all(runner)
