@@ -1,6 +1,7 @@
 require_relative './models/match'
 require_relative './models/team'
 require_relative './models/player'
+require_relative './models/league'
 require_relative './db/runner'
 require 'pry-byebug'
 
@@ -38,6 +39,7 @@ match5 = Match.new({'home_team_id' => team1.id, 'away_team_id' => team3.id, 'hom
 match6 = Match.new({'home_team_id' => team8.id, 'away_team_id' => team5.id, 'home_score' => 1, 'away_score' => 0},runner).save
 match7 = Match.new({'home_team_id' => team7.id, 'away_team_id' => team3.id, 'home_score' => 2, 'away_score' => 4},runner).save
 
-puts player1.get_team
+league1 = League.new(runner)
+
 binding.pry
 nil

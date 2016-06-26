@@ -2,8 +2,6 @@ DROP TABLE matches;
 DROP TABLE players;
 DROP TABLE teams;
 
-
-
 CREATE TABLE teams (
   id SERIAL4 primary key,
   name VARCHAR(255)
