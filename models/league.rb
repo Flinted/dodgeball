@@ -41,15 +41,15 @@ class League
     return result
   end
 
-  def get_team_goals(team_name)
-    home_goals = 0
-    away_goals = 0
+  def get_team_score(team_name)
+    home_score = 0
+    away_score = 0
     home = get_home_games_by_team(team_name)
     away = get_away_games_by_team(team_name)
-    home.each {|game| home_goals += game.home_score}
-    away.each {|game| away_goals += game.away_score}
-    total_goals = home_goals + away_goals
-    return total_goals
+    home.each {|game| home_score += game.home_score}
+    away.each {|game| away_score += game.away_score}
+    total_score = home_score + away_score
+    return total_score
   end
 
   def get_team_id(team_name)
@@ -81,24 +81,25 @@ class League
   def rank_teams()
     teams = Team.all(@runner)
     team_results = teams.map {|team| self.get_team_wins(team.id)}
-    team_results.sort! do |a,b|
-      b[3] <=> a[3]
-    end
-    team_results.sort! do |a,b|
-      b[2] <=> a[2]  
-    end
-    team_results.sort! do |a,b|
-      b[1] <=> a[1]
-    end
+    team_results.sort! {|a,b| [b[1],b[2],b[3]] <=> [a[1],a[2],a[3]]}
+    # team_results.sort! do |a,b|
+    #   b[3] <=> a[3]
+    # end
+    # team_results.sort! do |a,b|
+    #   b[2] <=> a[2]  
+    # end
+    # team_results.sort! do |a,b|
+    #   b[1] <=> a[1]
+    # end
     return team_results
   end
 
   def display_ranking()
     ranked_results = rank_teams()
-    teams = Team.all(@runner)
     count = 1
     for result in ranked_results 
-      puts "#{count}: #{result[0]} with #{result[1]} wins, #{result[2]} draws & #{result[3]} losses."
+      score = get_team_score(result[0])
+      puts "#{count}: #{result[0]} with #{result[1]} wins, #{result[2]} draws & #{result[3]} losses in #{result[1] + result[2] + result[3]} games. They got #{score} hits."
       count += 1
     end
   end
