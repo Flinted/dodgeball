@@ -1,11 +1,12 @@
 DROP TABLE matches;
-DROP TABLE teams;
 DROP TABLE players;
+DROP TABLE teams;
+
 
 
 CREATE TABLE teams (
   id SERIAL4 primary key,
-  name VARCHAR(255) not null
+  name VARCHAR(255)
 );
 
 CREATE TABLE matches (
@@ -19,5 +20,5 @@ CREATE TABLE matches (
 CREATE TABLE players (
   id SERIAL8 primary key,
   name VARCHAR(255),
-  team_id INT4
+  team_id INT4 references teams(id)
 );

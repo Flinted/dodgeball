@@ -5,9 +5,9 @@ class Match
   attr_reader :id
 
   def initialize(options, runner)
-    @id = options['id']
-    @home_team = options['home_team'].to_i
-    @away_team = options['away_team'].to_i
+    @id = options['id'].to_i
+    @home_team = options['home_team_id'].to_i
+    @away_team = options['away_team_id'].to_i
     @home_score = options['home_score'].to_i
     @away_score = options['away_score'].to_i
     @runner = runner

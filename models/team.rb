@@ -1,11 +1,12 @@
 require_relative 'match'
+require_relative 'player'
 
 class Team
 
   attr_reader :name, :id
   def initialize(options, runner)
-    @id = options['id']
-    @name =options['name']
+    @id = options['id'].to_i
+    @name = options['name']
     @players= []
     @runner = runner
   end
@@ -34,5 +35,11 @@ class Team
  def self.map_one( sql, runner )
    result = Team.map_all( sql, runner)
    return result.first
+ end
+
+ def players()
+  sql = "SELECT * FROM players WHERE players.team_id = #{id}"
+  result = Player.map_all(sql,@runner)
+  return result
  end
 end
