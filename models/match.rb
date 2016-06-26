@@ -2,7 +2,7 @@ require_relative 'team'
 
 class Match
 
-  attr_reader :id
+  attr_reader :id, :home_team, :away_team, :home_score, :away_score
 
   def initialize(options, runner)
     @id = options['id'].to_i

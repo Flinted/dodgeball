@@ -22,6 +22,18 @@ team8 = Team.new({'name' => 'Dojers'}, runner).save
 team9 = Team.new({'name' => 'Dodgy folk'}, runner).save
 team10 = Team.new({'name' => 'Egdod'}, runner).save
 
+teams = [team1,team2,team3,team4,team5,team6,team7,team8,team9,team10]
+
+100.times do 
+  teama = teams.sample.id 
+  teamb = teams.sample.id
+  while teama == teamb
+  teama = teams.sample.id 
+  teamb = teams.sample.id
+  end
+  Match.new({'home_team_id' => teama, 'away_team_id' => teamb, 'home_score' => rand(0..6), 'away_score' => rand(0..6)},runner).save
+end
+
 player1 = Player.new({'name' => "Bill", 'team_id' => team1.id }, runner).save
 player2 = Player.new({'name' => "Susan", 'team_id' => team9.id }, runner).save
 player3 = Player.new({'name' => "Frank", 'team_id' => team4.id }, runner).save
@@ -31,15 +43,15 @@ player6 = Player.new({'name' => "Jason", 'team_id' => team3.id }, runner).save
 player7 = Player.new({'name' => "Bianca", 'team_id' => team4.id }, runner).save
 player8 = Player.new({'name' => "Cliff", 'team_id' => team2.id }, runner).save
 
-match1 = Match.new({'home_team_id' => team2.id, 'away_team_id' => team4.id, 'home_score' => 3, 'away_score' => 5},runner).save
-match2 = Match.new({'home_team_id' => team5.id, 'away_team_id' => team6.id, 'home_score' => 1, 'away_score' => 1},runner).save
-match3 = Match.new({'home_team_id' => team7.id, 'away_team_id' => team10.id, 'home_score' => 0, 'away_score' => 4},runner).save
-match4 = Match.new({'home_team_id' => team9.id, 'away_team_id' => team8.id, 'home_score' => 2, 'away_score' => 1},runner).save
-match5 = Match.new({'home_team_id' => team1.id, 'away_team_id' => team3.id, 'home_score' => 3, 'away_score' => 3},runner).save
-match6 = Match.new({'home_team_id' => team8.id, 'away_team_id' => team5.id, 'home_score' => 1, 'away_score' => 0},runner).save
-match7 = Match.new({'home_team_id' => team7.id, 'away_team_id' => team3.id, 'home_score' => 2, 'away_score' => 4},runner).save
+# match1 = Match.new({'home_team_id' => team1.id, 'away_team_id' => team2.id, 'home_score' => 3, 'away_score' => 5},runner).save
+# match2 = Match.new({'home_team_id' => team1.id, 'away_team_id' => team2.id, 'home_score' => 1, 'away_score' => 1},runner).save
+# match3 = Match.new({'home_team_id' => team3.id, 'away_team_id' => team4.id, 'home_score' => 0, 'away_score' => 4},runner).save
+# match4 = Match.new({'home_team_id' => team2.id, 'away_team_id' => team4.id, 'home_score' => 2, 'away_score' => 1},runner).save
+# match5 = Match.new({'home_team_id' => team1.id, 'away_team_id' => team3.id, 'home_score' => 3, 'away_score' => 3},runner).save
+# match6 = Match.new({'home_team_id' => team3.id, 'away_team_id' => team2.id, 'home_score' => 1, 'away_score' => 0},runner).save
+# match7 = Match.new({'home_team_id' => team4.id, 'away_team_id' => team3.id, 'home_score' => 2, 'away_score' => 4},runner).save
 
 league1 = League.new(runner)
-
-binding.pry
-nil
+league1.display_ranking()
+# binding.pry
+# nil
