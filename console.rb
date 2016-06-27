@@ -53,8 +53,6 @@ player8 = Player.new({'name' => "Cliff", 'team_id' => team2.id }, runner).save
 
 league1 = League.new(runner)
 league1.display_ranking()
-puts league1.get_team_score('Doge')
-puts league1.get_team_score('Artful Dodgers')
 
 # binding.pry
 # nil

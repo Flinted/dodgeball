@@ -80,7 +80,7 @@ class League
 
   def rank_teams()
     teams = Team.all(@runner)
-    team_results = teams.map {|team| self.get_team_wins(team.id)}
+    team_results = teams.map {|team| get_team_wins(team.id)}
     team_results.sort! {|a,b| [b[1],b[2],b[3]] <=> [a[1],a[2],a[3]]}
     # team_results.sort! do |a,b|
     #   b[3] <=> a[3]
